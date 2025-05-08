@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('report_bp.static', filename='/css/my_report.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="split-container">
+    <!-- Left side - Create Form -->
+    <section class="create-form">
+        <h1>Create New Report</h1>
+        <form method="POST" class="form">
+            {{ form.hidden_tag() }}
+
+            <!-- ...existing code... -->
+            <div class="form-group">
+                <label>Select Appointment</label>
+                {{ form.appointment_id(class="form-field") }}
+                {% if not form.appointment_id.choices %}
+                    <p class="no-appointments">No available appointments found for creating a report</p>
+                {% endif %}
+                {% for error in form.appointment_id.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                {{ form.status(class="form-field") }}
+                {% for error in form.status.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            {% if is_professional %}
+                <div class="form-group">
+                    <label>Professional Feedback</label>
+                    {{ form.feedback_professional(class="form-field", placeholder="Professional feedback") }}
+                    {% for error in form.feedback_professional.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="form-group">
+                    <label>Client Feedback</label>
+                    {{ form.feedback_client(class="form-field", placeholder="Client feedback") }}
+                    {% for error in form.feedback_client.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <!-- ...rest of the template... -->
+
+            <div class="form-group">
+                {{ form.submit(class="submit-button") }}
+            </div>
+        </form>
+        <div class="navigation-links">
+            <a href="{{ url_for('report_bp.list_reports') }}" class="list-link">
+                <span class="icon">📋</span> View All Reports
+            </a>
+        </div>
+    </section>
+
+    <!-- Right side - Reports List -->
+    <section class="reports-list">
+        <h2>My Reports</h2>
+        {% if reports %}
+            <div class="reports-grid">
+                {% for report in reports %}
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3>Report #{{ report.report_id }}</h3>
+                            <span class="status-badge {{ report.status }}">{{ report.status }}</span>
+                        </div>
+                        <div class="report-content">
+                            <p><strong>Appointment:</strong> #{{ report.appointment_id }}</p>
+                            <p><strong>Date:</strong> {{ report.date_report }}</p>
+                        </div>
+                        <div class="report-actions">
+                            <a href="{{ url_for('report_bp.edit_report', report_id=report.report_id) }}" class="edit-link">
+                                <span class="icon">✎</span> Edit
+                            </a>
+                            <form action="{{ url_for('report_bp.delete_report', report_id=report.report_id) }}" method="POST" class="delete-form">
+                                <button type="submit" class="delete-button">
+                                    <span class="icon">×</span> Delete
+                                </button>
+                            </form>
+                            <a href="{{ url_for('report_bp.view_report', report_id=report.report_id) }}" class="view-link">
+                                <span class="icon">👁️</span> View
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-reports">No reports found</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

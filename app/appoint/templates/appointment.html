@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Appointment Details{% endblock %}
+
+{% block extra_css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('appoint.static', filename='css/appoint_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="appointment-detail-container">
+    <h1>Appointment Details</h1>
+    <div class="appointment-detail-card">
+        <div class="appointment-status status-{{ appointment.status }}">{{ appointment.status }}</div>
+        
+        <div class="detail-section">
+            <div class="detail-header">
+                <h2>{{ appointment.date_appoint.strftime('%B %d, %Y') }}</h2>
+                <div class="time-slot">{{ appointment.slot }}</div>
+            </div>
+            
+            <div class="detail-info">
+                <div>
+                    <div class="detail-label">Client</div>
+                    <div class="detail-value">{{ appointment.consumer_name }}</div>
+                </div>
+                
+                <div>
+                    <div class="detail-label">Professional</div>
+                    <div class="detail-value">{{ appointment.provider_name }}</div>
+                </div>
+                
+                <div>
+                    <div class="detail-label">Location</div>
+                    <div class="detail-value">{{ appointment.venue }}</div>
+                </div>
+                
+                <div>
+                    <div class="detail-label">Services</div>
+                    <div class="detail-value">{{ appointment.nber_services }} service(s)</div>
+                </div>
+                
+                {% if appointment.consumer_report %}
+                <div class="info-group full-width">
+                    <div class="detail-label">Notes</div>
+                    <div class="detail-value notes">{{ appointment.consumer_report }}</div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="appointment-actions">
+            <form action="{{ url_for('appoint.edit_appointment', appointment_id=appointment.appointment_id) }}" method="get" class="no-button edit">
+                <button type="submit" class="no-button">Edit Appointment</button>
+            </form>
+            <form method="POST" action="{{ url_for('appoint.cancel_appointment', appointment_id=appointment.appointment_id) }}" class="no-button cancel">
+                <button type="submit" class="no-button">Cancel Appointment</button>
+            </form>
+            
+        </div>
+    </div>
+    
+    <a href="{{ url_for('appoint.list_appointments') }}" class="back-link">← Back to appointments</a>
+</div>
+{% endblock %}

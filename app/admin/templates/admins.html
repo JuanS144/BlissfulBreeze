@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}
+List of all admins page
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Administrator Management</h1>
+    
+    <div class="admin-sections">
+        <!-- Admin List Section -->
+        <section>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Active</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for admin in admins %}
+                        <tr>
+                            <td>
+                                <div class="user-type {% if admin.user_type == 'Admin' %}admin{% else %}superadmin{% endif %}">
+                                    {{ admin.user_type }}
+                                </div>
+                            </td>
+                            <td>
+                                {{ admin.user_name }}
+                            </td>
+                            <td>
+                                <div class="status-indicator {{ 'active' if admin.active else 'inactive' }}">
+                                    {{ 'Active' if admin.active else 'Inactive' }}
+                                </div>
+                            </td>
+                            <td class="action-buttons">
+                                <!-- Edit Button -->
+                                <a class="action-edit" href="{{ url_for('admin.edit_user', user_id=admin.user_id) }}">Edit</a>
+                                <!-- Delete Button -->
+                                <form action="{{ url_for('admin.delete_user', user_id=admin.user_id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');" style="display:inline;">
+                                    <button class="action-delete" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- New Admin Form Section -->
+        <section>
+            <form class="admin-form" method="POST" action="{{ url_for('admin.admins') }}">
+                <fieldset>  
+                    <legend>New Administrator</legend>
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="form-group">
+                        <label for="{{ form.username.id }}">Username</label>
+                        {{ form.username(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.email.id }}">Email</label>
+                        {{ form.email(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.password.id }}">Password</label>
+                        {{ form.password(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.retype_password.id }}">Confirm Password</label>
+                        {{ form.retype_password(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.phone_number.id }}">Phone Number</label>
+                        {{ form.phone_number(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.address.id }}">Address</label>
+                        {{ form.address(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.age.id }}">Age</label>
+                        {{ form.age(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.pay_rate.id }}">Pay Rate</label>
+                        {{ form.pay_rate(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.access_level.id }}">Access Level</label>
+                        {{ form.access_level(class="form-control") }}
+                    </div>
+                    
+                    {{ form.submit(class="submit-btn") }}
+                </fieldset>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}

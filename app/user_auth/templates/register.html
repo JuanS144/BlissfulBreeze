@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('user_auth.static', filename='register.css') }}">
+    <script src="{{ url_for('user_auth.static', filename='register.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Register</h1>
+    
+    <div class="admin-sections">
+    <section class="registration-section">
+    <div class="role-switcher">
+        <button id="clientBtn" class="role-btn active">Client</button>
+        <button id="staffBtn" class="role-btn">Staff</button>
+    </div>
+    <div id="form-container">
+        <form id="clientform" method="POST" action="">
+            {{ client_form.hidden_tag() }}
+            <div class="form-group">
+                {{ client_form.email(class="form-field", placeholder="Enter email") }}
+                {% for error in client_form.email.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ client_form.username(class="form-field", placeholder="Enter username") }}
+                {% for error in client_form.username.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ client_form.password(class="form-field",placeholder="Enter password")}}
+                {% for error in client_form.password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ client_form.retype_password(class="form-field",placeholder="Retype password")}}
+                {% for error in client_form.retype_password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ client_form.phone_number(class="form-field",pattern="\d{1,}(-?\d{1,})*",placeholder="Enter number: 123-456-7890 (- optional)")}}
+                {% for error in client_form.phone_number.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ client_form.age(class="form-field",placeholder="Enter age")}}
+                {% for error in client_form.age.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ client_form.address(class="form-field",placeholder="Enter address")}}
+                {% for error in client_form.address.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ client_form.submit(class="submit-btn") }}
+            </div>
+        </form>
+
+        <form id="staffform" method="POST" action="">
+            {{ staff_form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ staff_form.email(class="form-field", placeholder="Enter email") }}
+                {% for error in staff_form.email.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.username(class="form-field", placeholder="Enter username") }}
+                {% for error in staff_form.username.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.password(class="form-field",placeholder="Enter password")}}
+                {% for error in staff_form.password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.retype_password(class="form-field",placeholder="Retype password")}}
+                {% for error in staff_form.retype_password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.phone_number(class="form-field",pattern="\d{1,}(-?\d{1,})*",placeholder="Enter number: 123-456-7890 (- optional)")}}
+                {% for error in staff_form.phone_number.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.age(class="form-field",placeholder="Enter age")}}
+                {% for error in staff_form.age.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.address(class="form-field",placeholder="Enter address")}}
+                {% for error in staff_form.address.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.pay_rate(class="form-field",placeholder="Enter pay rate")}}
+                {% for error in staff_form.pay_rate.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.speciality(class="form-field",placeholder="Enter speciality")}}
+                {% for error in staff_form.speciality.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ staff_form.submit(class="submit-btn") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

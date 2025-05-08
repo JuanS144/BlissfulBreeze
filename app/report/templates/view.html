@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('report_bp.static', filename='/css/view.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h1>Report #{{ report.report_id }}</h1>
+    <p><strong>Appointment ID:</strong> {{ report.appointment_id }}</p>
+    <p><strong>Status:</strong> {{ report.status }}</p>
+    <p><strong>Client Feedback:</strong> {{ report.feedback_client }}</p>
+    <p><strong>Professional Feedback:</strong> {{ report.feedback_professional }}</p>
+    <div class="actions">
+        <a href="{{ url_for('report_bp.edit_report', report_id=report.report_id) }}" class="action-btn edit-btn">
+            <span class="icon">✎</span> Edit
+        </a>
+        <form action="{{ url_for('report_bp.delete_report', report_id=report.report_id) }}" method="POST" class="delete-form">
+            <button type="submit" class="action-btn delete-btn">
+                <span class="icon">×</span> Delete
+            </button>
+        </form>
+        <a href="{{ url_for('report_bp.create_report') }}" class="action-btn create-btn">
+            <span class="icon">+</span> Create New
+        </a>
+        <a href="{{ url_for('report_bp.list_reports') }}" class="action-btn back-btn">
+            <span class="icon">←</span> Back to List
+        </a>
+    </div>
+</section>
+{% endblock %}

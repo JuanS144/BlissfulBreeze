@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Profile
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='profile.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>Edit Profile</h1>
+        <div class="profile-image-container">
+            {% if given_user.user_image %}
+            <div class="current-image">
+                <img src="{{ url_for('static', filename='images/profiles/' ~ given_user.user_image) }}" alt="Profile picture">
+            </div>
+            {% else %}
+            <div class="profile-placeholder">
+                <span>{{ given_user.user_name[:1] }}</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="profile-content">
+        <form method="POST" action="" class="profile-form" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend>User Information</legend>
+                
+                <div class="form-group">
+                    <label for="{{ form.image.id }}">Profile Image</label>
+                    <div class="file-input-wrapper">
+                        {{ form.image(class="form-field file-input") }}
+                        <div class="file-input-placeholder">Choose image file</div>
+                    </div>
+                    {% for error in form.image.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.email.id }}">Email</label>
+                    {{ form.email(class="form-field", placeholder="Email: " + given_user.email) }}
+                    {% for error in form.email.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.username.id }}">Username</label>
+                    {{ form.username(class="form-field", placeholder="Username: " + given_user.user_name) }}
+                    {% for error in form.username.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.phone_number.id }}">Phone Number</label>
+                    {{ form.phone_number(class="form-field", pattern="\d{1,}(-?\d{1,})*", placeholder="Phone number: " + given_user.phone_number) }}
+                    {% for error in form.phone_number.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.address.id }}">Address</label>
+                    {{ form.address(class="form-field", placeholder="Address: " + given_user.address) }}
+                    {% for error in form.address.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.age.id }}">Age</label>
+                    {{ form.age(class="form-field", placeholder="Age: " ~ given_user.age) }}
+                    {% for error in form.age.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                {% if form.pay_rate %}
+                <div class="form-group">
+                    <label for="{{ form.pay_rate.id }}">Pay Rate</label>
+                    {{ form.pay_rate(class="form-field", placeholder="Pay Rate: " ~ given_user.pay_rate) }}
+                    {% for error in form.pay_rate.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if form.access_level %}
+                <div class="form-group">
+                    <label for="{{ form.access_level.id }}">Access Level</label>
+                    {{ form.access_level(class="form-field") }}
+                    {% for error in form.access_level.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if form.speciality %}
+                <div class="form-group">
+                    <label for="{{ form.speciality.id }}">speciality</label>
+                    {{ form.speciality(class="form-field", placeholder="speciality: " + given_user.speciality) }}
+                    {% for error in form.speciality.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </fieldset>
+            
+            <fieldset class="security-section">
+                <legend>Security Verification</legend>
+                <div class="form-group">
+                    <label for="{{ form.password.id }}">Admin Password</label>
+                    {{ form.password(class="form-field", placeholder="Please input your admin password to update") }}
+                    {% for error in form.password.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-actions">
+                    {{ form.submit(class="submit-btn") }}
+                    <a href="{{ url_for('user_auth.profile') }}" class="cancel-btn">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.querySelector('.file-input');
+        const fileInputPlaceholder = document.querySelector('.file-input-placeholder');
+        
+        if (fileInput && fileInputPlaceholder) {
+            fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    fileInputPlaceholder.textContent = this.files[0].name;
+                } else {
+                    fileInputPlaceholder.textContent = 'Choose image file';
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

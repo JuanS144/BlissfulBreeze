@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block h1_title %}
+    About Page
+{% endblock %}
+
+{% block description %}
+    About Assignment 6
+{% endblock %}
+
+{% block right_col%}
+    <section id="about">
+        <h2>Part 1 - Python Blueprints & UserMixin</h2>
+        <ul>
+            <li>Using python Blueprints</li>
+            <li>Registering Blueprints in create_app() </li>
+            <li>Creating User class inheriting from UserMixin</li>
+        </ul>
+        <h2>Part 2 - Flask-Login & LoginManager / Authentication</h2>
+        <ul>
+            <li>Create login manager to manage user sessions</li>
+            <li>Authenticate user & give / restrict access</li>
+            <li>Hash_pwds using flask-bcrypt</li>
+        </ul>
+    </section>
+{% endblock %}

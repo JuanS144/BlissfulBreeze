@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('report_bp.static', filename='/css/list.css') }}">
+{% endblock %}
+{% block content %}
+<section class="container">
+    <a href="{{ url_for('report_bp.create_report') }}">Create New Report</a>
+    <ul>
+        {% for report in reports %}
+            <li>
+                <a href="{{ url_for('report_bp.view_report', report_id=report.report_id) }}">
+                    Report #{{ report.report_id }} - Status: {{ report.status }}
+                </a>
+                <form action="{{ url_for('report_bp.delete_report', report_id=report.report_id) }}" 
+                    method="POST" 
+                    style="display:inline;"
+                    onsubmit="return confirm('Are you sure you want to delete this report?');">
+                    <button type="submit">Delete</button>
+                </form>
+                <a class="edit" href="{{ url_for('report_bp.edit_report', report_id=report.report_id) }}">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,179 @@
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgba(34, 40, 49, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    color: rgb(223, 208, 184);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: rgb(223, 208, 184);
+    border-bottom: 2px solid rgb(148, 137, 121);
+    padding-bottom: 15px;
+}
+
+.container p {
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(57, 62, 70, 0.7);
+    border-radius: 8px;
+}
+
+.container strong {
+    color: rgb(255, 240, 210);
+    margin-right: 10px;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    min-width: 120px;
+    cursor: pointer;
+    border: 1px solid;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.edit-btn {
+    background-color: rgba(223, 208, 184, 0.2);
+    color: rgb(223, 208, 184);
+    border-color: rgb(223, 208, 184);
+}
+
+.edit-btn:hover {
+    background-color: rgba(223, 208, 184, 0.3);
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background-color: rgba(255, 130, 130, 0.2);
+    color: rgb(255, 130, 130);
+    border-color: rgb(255, 130, 130);
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 130, 130, 0.3);
+    transform: translateY(-2px);
+}
+
+.create-btn {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: rgb(76, 175, 80);
+    border-color: rgb(76, 175, 80);
+}
+
+.create-btn:hover {
+    background-color: rgba(76, 175, 80, 0.3);
+    transform: translateY(-2px);
+}
+
+.back-btn {
+    background-color: rgba(57, 62, 70, 0.7);
+    color: rgb(223, 208, 184);
+    border-color: rgb(148, 137, 121);
+}
+
+.back-btn:hover {
+    background-color: rgba(57, 62, 70, 0.9);
+    transform: translateY(-2px);
+}
+
+.delete-form {
+    margin: 0;
+    padding: 0;
+}
+
+.icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.actions a {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.actions a[href*="edit"] {
+    background-color: rgba(223, 208, 184, 0.2);
+    color: rgb(223, 208, 184);
+    border: 1px solid rgb(223, 208, 184);
+}
+
+.actions a[href*="edit"]:hover {
+    background-color: rgba(223, 208, 184, 0.3);
+    transform: translateY(-2px);
+}
+
+.actions a[href*="list"] {
+    background-color: rgba(57, 62, 70, 0.7);
+    color: rgb(223, 208, 184);
+    border: 1px solid rgb(148, 137, 121);
+}
+
+.actions a[href*="list"]:hover {
+    background-color: rgba(57, 62, 70, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .container p {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,151 @@
+/* New Appointment Form Styling */
+
+/* Container styling */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form {
+    width: 450px;
+    max-width: 95%;
+    margin: 0 auto;
+    background-color: rgba(34, 40, 49, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+fieldset {
+    border: 1px solid rgba(148, 137, 121, 0.3);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Form elements */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: rgb(223, 208, 184);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Text inputs, select, etc. */
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(148, 137, 121, 0.5);
+    border-radius: 10px;
+    background-color: rgba(57, 62, 70, 0.7);
+    color: rgb(223, 208, 184);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+}
+
+/* Date input specific styling */
+input[type="date"] {
+    padding: 10px 15px;
+    color: rgb(223, 208, 184);
+    background-color: rgba(57, 62, 70, 0.7);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Textarea styling */
+textarea {
+    min-height: 100px;
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Focus state */
+input:focus, select:focus, textarea:focus {
+    border-color: rgb(223, 208, 184);
+    box-shadow: 0 0 10px rgba(223, 208, 184, 0.2);
+    outline: none;
+    background-color: rgba(57, 62, 70, 0.9);
+}
+
+/* Submit button */
+input[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgba(223, 208, 184, 0.2);
+    color: rgb(223, 208, 184);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(223, 208, 184, 0.3);
+    box-sizing: border-box;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(223, 208, 184, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Back link styling */
+a {
+    color: rgb(223, 208, 184);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+a:hover {
+    color: rgb(255, 240, 210);
+    transform: translateX(-3px);
+}
+
+h1, h2, h3, h4 {
+    color: rgb(223, 208, 184);
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Make sure form field class also has box-sizing */
+.form-field {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    form {
+        width: 95%;
+    }
+    
+    fieldset {
+        padding: 15px;
+    }
+}

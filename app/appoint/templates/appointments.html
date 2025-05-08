@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}List of all Appointments{% endblock %}
+
+{% block extra_css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('appoint.static', filename='css/appoint_style.css') }}">
+<link rel="stylesheet" href="{{ url_for('appoint.static', filename='css/mobile.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+{% if current_user.access_level == 4 %}
+    <h1>View and manage all salon appointments</h1>
+{% else %}
+    <h1>Your appointments</h1>
+{% endif %}
+
+<section class="appointments-container">
+    {% if appointments %}
+        {% for appointment in appointments %}
+            <div class="appointment-card">
+                <div class="appointment-status status-{{ appointment.status }}">{{ appointment.status }}</div>
+                <div class="appointment-header">
+                    <div class="appointment-date">{{ appointment.date_appoint.strftime('%B %d, %Y') }}</div>
+                    <div>{{ appointment.slot }}</div>
+                </div>
+                <div class="appointment-details">
+                    <div>
+                        <div class="detail-label">Client</div>
+                        <div>{{ appointment.consumer_name }}</div>
+                    </div>
+                    <div>
+                        <div class="detail-label">Professional</div>
+                        <div>{{ appointment.provider_name }}</div>
+                    </div>
+                </div>
+                <div class="appointments-actions">
+                    <a href="{{ url_for('appoint.get_appointment', appointment_id=appointment.appointment_id) }}" class="action-button primary">View Details</a>
+                    <a href="{{ url_for('appoint.edit_appointment', appointment_id=appointment.appointment_id) }}" class="action-button">Edit</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No appointments found.</p>
+    {% endif %}
+</section>
+
+<a href="{{ url_for('appoint.new_appointment') }}" class="new-appointment-btn">Book New Appointment</a>
+{% endblock %}

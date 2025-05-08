@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block title %}
+Member Management
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='member.css') }}">
+<script src="{{ url_for('admin.static', filename='member.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Member Management</h1>
+    
+    <div class="admin-sections">
+        <!-- Members List Section -->
+        <section class="members-list">
+            <h2>Current Members</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Active</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in members %}
+                        <tr>
+                            <td>
+                                <div class="user-type {{ member.user_type.lower() }}">{{ member.user_type }}</div>
+                            </td>
+                            <td>
+                                {{ member.user_name }}
+                            </td>
+                            <td>
+                                <div class="status-indicator {{ 'active' if member.active else 'inactive' }}">
+                                    {{ 'Active' if member.active else 'Inactive' }}
+                                </div>
+                            </td>
+                            <td class="action-buttons">
+                                <!-- Edit Button -->
+                                <a class="action-edit" href="{{ url_for('admin.edit_user', user_id=member.user_id) }}">Edit</a>
+                                <!-- Delete Button -->
+                                <form action="{{ url_for('admin.delete_user', user_id=member.user_id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');" style="display:inline;">
+                                    <button class="action-delete" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Registration Forms Section -->
+        <section class="registration-section">
+            <h2>Add New Member</h2>
+            
+            <div class="role-switcher">
+                <button id="clientBtn" class="role-btn active">Client</button>
+                <button id="staffBtn" class="role-btn">Staff</button>
+            </div>
+            
+            <!-- Client Registration Form -->
+            <form id="clientform" class="admin-form" method="POST" action="">
+                {{ client_form.hidden_tag() }}
+                <fieldset>
+                    <legend>New Client</legend>
+                    
+                    <div class="form-group">
+                        <label for="{{ client_form.email.id }}">Email</label>
+                        {{ client_form.email(class="form-field", placeholder="Enter email") }}
+                        {% for error in client_form.email.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ client_form.username.id }}">Username</label>
+                        {{ client_form.username(class="form-field", placeholder="Enter username") }}
+                        {% for error in client_form.username.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ client_form.password.id }}">Password</label>
+                        {{ client_form.password(class="form-field", placeholder="Enter password") }}
+                        {% for error in client_form.password.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ client_form.retype_password.id }}">Confirm Password</label>
+                        {{ client_form.retype_password(class="form-field", placeholder="Retype password") }}
+                        {% for error in client_form.retype_password.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ client_form.phone_number.id }}">Phone Number</label>
+                        {{ client_form.phone_number(class="form-field", pattern="\d{1,}(-?\d{1,})*", placeholder="Enter number: 123-456-7890 (- optional)") }}
+                        {% for error in client_form.phone_number.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ client_form.age.id }}">Age</label>
+                        {{ client_form.age(class="form-field", placeholder="Enter age") }}
+                        {% for error in client_form.age.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ client_form.address.id }}">Address</label>
+                        {{ client_form.address(class="form-field", placeholder="Enter address") }}
+                        {% for error in client_form.address.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ client_form.submit(class="submit-btn") }}
+                    </div>
+                </fieldset>
+            </form>
+
+            <!-- Staff Registration Form -->
+            <form id="staffform" class="admin-form" method="POST" action="">
+                {{ staff_form.hidden_tag() }}
+                <fieldset>
+                    <legend>New Staff Member</legend>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.email.id }}">Email</label>
+                        {{ staff_form.email(class="form-field", placeholder="Enter email") }}
+                        {% for error in staff_form.email.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.username.id }}">Username</label>
+                        {{ staff_form.username(class="form-field", placeholder="Enter username") }}
+                        {% for error in staff_form.username.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.password.id }}">Password</label>
+                        {{ staff_form.password(class="form-field", placeholder="Enter password") }}
+                        {% for error in staff_form.password.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.retype_password.id }}">Confirm Password</label>
+                        {{ staff_form.retype_password(class="form-field", placeholder="Retype password") }}
+                        {% for error in staff_form.retype_password.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.phone_number.id }}">Phone Number</label>
+                        {{ staff_form.phone_number(class="form-field", pattern="\d{1,}(-?\d{1,})*", placeholder="Enter number: 123-456-7890 (- optional)") }}
+                        {% for error in staff_form.phone_number.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.age.id }}">Age</label>
+                        {{ staff_form.age(class="form-field", placeholder="Enter age") }}
+                        {% for error in staff_form.age.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.address.id }}">Address</label>
+                        {{ staff_form.address(class="form-field", placeholder="Enter address") }}
+                        {% for error in staff_form.address.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.pay_rate.id }}">Pay Rate</label>
+                        {{ staff_form.pay_rate(class="form-field", placeholder="Enter pay rate") }}
+                        {% for error in staff_form.pay_rate.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ staff_form.speciality.id }}">speciality</label>
+                        {{ staff_form.speciality(class="form-field", placeholder="Enter speciality") }}
+                        {% for error in staff_form.speciality.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ staff_form.submit(class="submit-btn") }}
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('user_auth.static', filename='login.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="admin-container">
+    <h1>Login</h1>
+
+    <div class="admin-sections">
+        <form id="clientform" method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username(class="form-field", placeholder="Enter username") }}
+                {% for error in form.username.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.password(class="form-field",placeholder="Enter password")}}
+                {% for error in form.password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group" id="submit">
+                {{ form.submit(class="submit-btn") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

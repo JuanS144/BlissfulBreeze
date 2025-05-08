@@ -1,0 +1,131 @@
+.container {
+    max-width: 800px;
+    margin: 80px auto 40px;
+    padding: 30px;
+    background-color: rgba(34, 40, 49, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    color: rgb(223, 208, 184);
+    font-family: 'Times New Roman', Times, serif;
+}
+.container li > a {
+    color: rgb(223, 208, 184);
+    text-decoration: none;
+    flex-grow: 1;
+}
+
+/* Create New Report button */
+.container > a {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-bottom: 20px;
+    background-color: rgba(223, 208, 184, 0.2);
+    color: rgb(223, 208, 184);
+    border: 1px solid rgb(223, 208, 184);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.container > a:hover {
+    background-color: rgba(223, 208, 184, 0.3);
+    transform: translateY(-2px);
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: rgba(57, 62, 70, 0.7);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+li:hover {
+    transform: translateY(-2px);
+}
+
+/* Report link styling */
+li > a {
+    color: rgb(223, 208, 184);
+    text-decoration: none;
+    flex-grow: 1;
+}
+
+/* Button styling */
+.container button {
+    background-color: rgba(255, 130, 130, 0.2);
+    color: rgb(255, 130, 130);
+    border: 1px solid rgb(255, 130, 130);
+}
+
+.container button:hover {
+    background-color: rgba(255, 90, 90, 0.3);
+}
+
+/* Edit link styling */
+.container li > a:last-child {
+    background-color: rgba(223, 208, 184, 0.2);
+    color: rgb(223, 208, 184);
+    border: 1px solid rgb(223, 208, 184);
+    text-decoration: none;
+}
+
+.container li > a:last-child:hover {
+    background-color: rgba(223, 208, 184, 0.3);
+}
+
+/* Common styling for button and edit link */
+.container button, .container li > a:last-child {
+    padding: 8px 16px;
+    margin: 0 8px;
+    min-width: 80px; /* Set fixed minimum width */
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit {
+    background-color: rgba(223, 208, 184, 0.2);
+    color: rgb(223, 208, 184);
+    border: 1px solid rgb(223, 208, 184);
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.edit:hover {
+    background-color: rgba(223, 208, 184, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        margin: 40px 20px;
+        padding: 20px;
+    }
+
+    li {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button, li > a:last-child {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+}

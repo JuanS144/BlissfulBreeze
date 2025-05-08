@@ -1,0 +1,262 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html{
+  background-color: rgb(57, 62, 70);
+}
+
+.navbar {
+  position: fixed;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+nav.navbar{
+  background-color: rgba(34, 40, 49, 0.95);
+  padding: 0.6rem 1.2rem;
+  top: 20px;
+  right: 30px;
+}
+
+button.navbar {
+  background-color: rgb(148, 137, 121);
+  padding: 2rem 1rem;
+  top: 70%;
+  right: 0px;
+  flex-direction: column;
+  writing-mode: vertical-rl;
+  height: auto;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+button.navbar .nav-link {
+  transform: rotate(180deg);
+  font-size: 16px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  margin: 6px 0;
+  color: black;
+
+}
+
+.nav-link{
+  position: relative;
+  font-size: 16px;
+  color: rgb(223, 208, 184);
+  background: none;
+  border: none;
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link::before,
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgb(223, 208, 184);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link::before {
+  top: 0;
+  transform-origin: left;
+}
+
+.nav-link::after {
+  bottom: 0;
+  transform-origin: right;
+}
+
+.nav-link:hover, button.navbar .nav-link:hover
+{
+  color: rgb(255, 240, 210);
+}
+
+.nav-link:hover::before,
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.logout {
+  color: rgb(255, 130, 130);
+}
+
+.logout:hover {
+  color: rgb(255, 90, 90);
+}
+
+nav{
+  background-color: rgb(34, 40, 49);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+nav a,button{
+
+  background-color: none;
+  color: rgb(223, 208, 184);
+  font-size: 20px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-family: 'Times New Roman', Times, serif;
+}
+nav button{
+  text-decoration: underline;
+}
+
+#main-content {
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: none;
+}
+
+footer {
+  background-color: rgba(34, 40, 49, 0.95);
+  color: rgb(223, 208, 184);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-top: 2px solid rgb(148, 137, 121);
+  font-family: 'Times New Roman', Times, serif;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  flex-wrap: wrap; /* allows it to wrap on smaller screens */
+  gap: 1rem;
+}
+
+footer a.nav-link {
+  color: rgb(223, 208, 184);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a.nav-link:hover {
+  color: rgb(255, 240, 210);
+}
+
+#footer-logo {
+  height: 80px;
+  width: auto;
+  filter: brightness(0) invert(1); /* Makes the logo white */
+  margin-left: 1rem;
+}
+
+#logo-dropdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgb(223, 208, 184), rgb(148, 137, 121));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+  
+#logo {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    animation: dropIn 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(-100px);
+    cursor: pointer;
+  }
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+  @keyframes dropIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .flash {
+    width: 40%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: rgb(0,0,0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1); 
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .flash.show {
+    width: 40%;
+    top: 20px;
+    opacity: 1;
+  }
+  
+  .flash.info {
+    background-color: rgba(148, 137, 121, 0.8);
+    border: 1px solid rgba(223, 208, 184);
+    color: rgb(223, 208, 184)
+  }
+
+  .flash.message {
+    padding: 15px 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .flash.success {
+    background-color: rgba(76, 175, 80, 0.8);
+    border: 1px solid rgb(76, 175, 80);
+    color: #c8e6c9;
+  }
+  
+  .flash.error {
+    background-color: rgba(244, 67, 54, 0.8);
+    border: 1px solid rgba(244, 67, 54);
+    color: #ffcdd2;
+  }
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+  display: block;
+}
+

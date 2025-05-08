@@ -1,0 +1,324 @@
+/* APPOINTMENTS - Core Styles */
+body {
+  background-color: rgb(57, 62, 70);
+  color: rgb(223, 208, 184);
+  font-family: 'Times New Roman', Times, serif;
+  line-height: 1.6;
+}
+
+h1 {
+  color: rgb(223, 208, 184);
+  text-align: left;
+  margin-left: 2%;
+  font-weight: normal;
+  border-bottom: 1px solid rgba(223, 208, 184, 0.3);
+  padding-bottom: 12px;
+}
+
+a {
+  color: rgb(223, 208, 184);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: rgb(255, 240, 210);
+}
+
+.appointments-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+
+.appointment-card {
+  background-color: rgba(34, 40, 49, 0.95);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.appointment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.appointment-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(148, 137, 121, 0.2);
+}
+
+.appointment-date {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: rgb(255, 240, 210);
+}
+
+.appointment-details {
+  padding: 20px;
+  font-size: 16px;
+}
+
+.appointment-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 15px;
+  border-bottom-left-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.status-confirmed {
+  background-color: rgba(76, 175, 80, 0.8);
+  color: white;
+}
+
+.status-requested {
+  background-color: rgba(255, 193, 7, 0.8);
+  color: black;
+}
+
+.status-completed {
+  background-color: rgba(33, 150, 243, 0.8);
+  color: white;
+}
+
+.status-cancelled {
+  background-color: rgba(244, 67, 54, 0.8);
+  color: white;
+}
+
+.appointments-actions {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(34, 40, 49, 0.5);
+}
+
+.appointment-actions {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 30px;
+  background-color: rgba(57, 62, 70, 0.7);
+}
+
+.action-button {
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 1px solid rgb(148, 137, 121);
+  background: transparent;
+  color: rgb(223, 208, 184);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: rgba(223, 208, 184, 0.1);
+  transform: translateY(-2px);
+}
+
+.action-button.primary {
+  background-color: rgba(223, 208, 184, 0.2);
+}
+
+.no-button {
+  padding: 8px;
+  border-radius: 30px;
+  background: transparent;
+  color: rgb(223, 208, 184);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.no-button.cancel {
+  background-color: rgba(244, 67, 54, 0.2);
+  border-color: rgba(244, 67, 54, 0.5);
+}
+
+.no-button.cancel:hover {
+  background-color: rgba(244, 67, 54, 0.3);
+}
+
+.no-button.edit:hover {
+  background-color: rgb(57, 62, 70);
+}
+
+.new-appointment-btn {
+  display: block;
+  background-color: rgb(34, 40, 49);
+  color: rgb(223, 208, 184);
+  text-align: center;
+  padding: 14px 20px;
+  margin: 40px auto;
+  border-radius: 40px;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  width: 250px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(223, 208, 184, 0.3);
+}
+
+.new-appointment-btn:hover {
+  background-color: rgba(34, 40, 49, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border-color: rgba(223, 208, 184, 0.5);
+}
+
+.appointment-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.appointment-detail-card {
+  background-color: rgba(34, 40, 49, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.detail-section {
+  padding: 30px;
+}
+
+.detail-header {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(148, 137, 121, 0.3);
+}
+
+.detail-header h2 {
+  color: rgb(255, 240, 210);
+  font-size: 26px;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+.time-slot {
+  font-size: 18px;
+  color: rgba(223, 208, 184, 0.8);
+}
+
+.detail-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.detail-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.6;
+  margin-bottom: 3px;
+}
+
+.detail-value {
+  font-size: 18px;
+  color: rgb(255, 240, 210);
+}
+
+.detail-value.notes {
+  background-color: rgba(57, 62, 70, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 16px;
+  color: rgb(223, 208, 184);
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  color: rgb(255, 240, 210);
+  transform: translateX(-3px);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(148, 137, 121, 0.2);
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(223, 208, 184, 0.8);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid rgba(148, 137, 121, 0.5);
+  border-radius: 8px;
+  background-color: rgba(57, 62, 70, 0.7);
+  color: rgb(223, 208, 184);
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: rgb(223, 208, 184);
+  box-shadow: 0 0 10px rgba(223, 208, 184, 0.2);
+  outline: none;
+  background-color: rgba(57, 62, 70, 0.9);
+}
+
+
+.button:hover, input[type="submit"]:hover {
+  background-color: rgba(223, 208, 184, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.flash-message {
+  padding: 15px 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.flash-success {
+  background-color: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.5);
+  color: #c8e6c9;
+}
+
+.flash-error {
+  background-color: rgba(244, 67, 54, 0.2);
+  border: 1px solid rgba(244, 67, 54, 0.5);
+  color: #ffcdd2;
+}

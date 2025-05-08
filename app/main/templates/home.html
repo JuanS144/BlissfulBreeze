@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('main.static', filename='css/home.css') }}">
+    <script src="{{ url_for('main.static', filename='js/home.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<section id="topsection">
+    <div id="left-col">
+        <!-- Services Section -->
+        <div data-toggle="services" class="image-wrapper" style="background-image: url('{{ url_for('main.static', filename='images/services.jpg') }}')">
+            <div class="overlay-text">Services</div>
+        </div>
+        <div id="services-dropdown" class="dropdown-wrapper">
+            <table id="services-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Duration</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Haircut</td>
+                        <td>30 min</td>
+                        <td>$25</td>
+                    </tr>
+                    <tr>
+                        <td>Beard Trim</td>
+                        <td>15 min</td>
+                        <td>$15</td>
+                    </tr>
+                    <tr>
+                        <td>Shave</td>
+                        <td>20 min</td>
+                        <td>$20</td>
+                    </tr>
+                    <tr>
+                        <td>Shave</td>
+                        <td>20 min</td>
+                        <td>$20</td>
+                    </tr>
+                    <tr>
+                        <td>Shave</td>
+                        <td>20 min</td>
+                        <td>$20</td>
+                    </tr>
+                    <tr>
+                        <td>Shave</td>
+                        <td>20 min</td>
+                        <td>$20</td>
+                    </tr>
+                    <tr>
+                        <td>Shave</td>
+                        <td>20 min</td>
+                        <td>$20</td>
+                    </tr>
+                    <tr>
+                        <td>Shave</td>
+                        <td>20 min</td>
+                        <td>$20</td>
+                    </tr>
+                       <tr>
+                        <td>Shave</td>
+                        <td>20 min</td>
+                        <td>$20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Staff Section -->
+        <div data-toggle="staff" class="image-wrapper" style="background-image: url('{{ url_for('main.static', filename='images/staff.jpg') }}')">
+            <div class="overlay-text">Professionals</div>
+        </div>
+        <div id="staff-dropdown" class="dropdown-wrapper">
+            <table id="staff-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Specialty</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>JAMAL</td>
+                        <td>HAIR</td>
+                        <td>$25</td>
+                    </tr>
+                    <tr>
+                        <td>JAMES</td>
+                        <td>beard</td>
+                        <td>$15</td>
+                    </tr>
+                    <tr>
+                        <td>JASON</td>
+                        <td>hairdye</td>
+                        <td>$20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Right Column - Client Testimonials -->
+    <div id="right-col">
+        <h2>Client Testimonials</h2>
+        <div class="scrollable-reviews">
+            {% for review in reviews %}
+                <div class="review-card">
+                    <p class="review-rating">⭐⭐⭐⭐⭐</p>
+                    <p class="review-content">"{{ review }}"</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Bottom Section - Info -->
+<section id="bottomsection">
+    <h2>Info</h2>
+    <div class="info-card">
+        <img id="map" src="{{ url_for('main.static', filename='images/map.png') }}" alt="Map Location">
+        <div class="info-text">
+            <p><strong>Address:</strong><br> 3040 Sherbrooke St W, Montreal, Quebec H3Z 1A4</p>
+            <p><strong>Business Hours:</strong><br> Mon–Fri, 8 a.m – 8 p.m</p>
+            <p><strong>Phone:</strong><br> (514) - 931 - 8731</p>
+            <p><strong>Email:</strong><br> BlissfullBreeze@gmail.com</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

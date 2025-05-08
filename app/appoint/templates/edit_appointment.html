@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+    
+{% block extra_css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('appoint.static', filename='css/new_appoint.css') }}">
+<link rel="stylesheet" href="{{ url_for('appoint.static', filename='css/mobile.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <p>Edit Appointment:</p>
+    <form method="POST" action="{{ url_for('appoint.edit_appointment', appointment_id=appointment.appointment_id) }}">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <div class="form-group">
+                {{ form.date_appoint.label }}
+                {{ form.date_appoint}}
+            </div>
+
+            <div class="form-group">
+                {{ form.slot.label }}
+                {{ form.slot}}
+            </div>
+            <div class="form-group">
+                {{ form.venue.label }}
+                {{ form.venue}}
+            </div>
+
+            <div class="form-group">
+                {{ form.nber_services.label }}
+                {{ form.nber_services}}
+            </div>
+
+            <div class="form-group">
+                {{ form.consumer_report.label }}
+                {{ form.consumer_report}}
+            </div>
+
+            <div class="form-group">
+                {{ form.submit }}
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

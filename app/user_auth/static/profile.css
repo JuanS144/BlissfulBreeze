@@ -1,0 +1,226 @@
+/* Profile Page Stylesheet */
+
+/* Main container */
+.profile-container {
+    max-width: 800px;
+    margin: 80px auto 40px;
+    padding: 30px;
+    background-color: rgba(34, 40, 49, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    color: rgb(223, 208, 184);
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  /* Profile header with image */
+  .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgb(148, 137, 121);
+  }
+  
+  .profile-header h1 {
+    color: rgb(223, 208, 184);
+    font-size: 28px;
+    margin: 0;
+  }
+  
+  .profile-image-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid rgb(148, 137, 121);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .current-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profile-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgb(57, 62, 70), rgb(34, 40, 49));
+    color: rgb(223, 208, 184);
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  /* Form styling */
+  .profile-form fieldset {
+    border: 1px solid rgb(148, 137, 121);
+    border-radius: 10px;
+    padding: 20px;
+    padding-right: 40px;
+    margin-bottom: 25px;
+    background-color: rgba(57, 62, 70, 0.5);
+  }
+  
+  .profile-form legend {
+    padding: 0 10px;
+    color: rgb(223, 208, 184);
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .form-group {
+    margin-bottom: 18px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(223, 208, 184);
+    font-size: 16px;
+  }
+  
+  .form-field {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(148, 137, 121);
+    background-color: rgba(34, 40, 49, 0.8);
+    color: rgb(223, 208, 184);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+  }
+  
+  .form-field:focus {
+    outline: none;
+    border-color: rgb(223, 208, 184);
+    box-shadow: 0 0 5px rgba(223, 208, 184, 0.5);
+  }
+  
+  .form-field::placeholder {
+    color: rgba(223, 208, 184, 0.6);
+  }
+  
+  /* File input styling */
+  .file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .file-input {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    height: 100%;
+  }
+  
+  .file-input-placeholder {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(148, 137, 121);
+    background-color: rgba(34, 40, 49, 0.8);
+    color: rgba(223, 208, 184, 0.6);
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  /* Error messages */
+  .error-message {
+    color: rgb(255, 130, 130);
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  /* Security section */
+  .security-section {
+    background-color: rgba(57, 62, 70, 0.7);
+    border: 1px solid rgba(255, 130, 130, 0.3) !important;
+  }
+  
+  .security-section legend {
+    color: rgb(255, 183, 77);
+  }
+  
+  /* Form actions */
+  .form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .submit-btn, 
+  .cancel-btn {
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .submit-btn {
+    background-color: rgba(223, 208, 184, 0.2);
+    color: rgb(223, 208, 184);
+    border: 1px solid rgb(223, 208, 184);
+    flex: 1;
+  }
+  
+  .submit-btn:hover {
+    background-color: rgba(223, 208, 184, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .cancel-btn {
+    background-color: rgba(255, 130, 130, 0.1);
+    color: rgb(255, 130, 130);
+    border: 1px solid rgb(255, 130, 130);
+    text-decoration: none;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cancel-btn:hover {
+    background-color: rgba(255, 130, 130, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .profile-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+    
+    .profile-image-container {
+      margin: 0 auto;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+    }
+
+  }
+
+  select.form-field,
+    input[type="file"].form-field {
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    }

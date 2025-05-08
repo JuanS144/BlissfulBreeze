@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('report_bp.static', filename='/css/report_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h1>Edit Report</h1>
+    <form method="POST" class="form">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            <label>Appointment</label>
+            {{ form.appointment_id(class="form-field") }}
+            {% for error in form.appointment_id.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            {{ form.status(class="form-field") }}
+            {% for error in form.status.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        {% if is_professional %}
+            <div class="form-group">
+                <label>Professional Feedback</label>
+                {{ form.feedback_professional(class="form-field", placeholder="Professional feedback") }}
+                {% for error in form.feedback_professional.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="form-group">
+                <label>Client Feedback</label>
+                {{ form.feedback_client(class="form-field", placeholder="Client feedback") }}
+                {% for error in form.feedback_client.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="form-actions">
+            {{ form.submit(class="submit-button", value="Update Report") }}
+            <a href="{{ request.referrer or url_for('report_bp.view_report', report_id=report_id) }}" class="cancel-button">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

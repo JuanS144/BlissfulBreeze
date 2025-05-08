@@ -1,0 +1,276 @@
+#topsection{
+
+    display: flex;
+    align-items: flex-start;
+    max-height: 90vh; /* or whatever works for your design */
+
+    max-height: none;         /* Default: no scroll */
+    overflow-y: visible;
+    transition: max-height 0.4s ease;
+}
+
+a{
+  text-decoration: none;
+}
+
+.image-wrapper {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(223, 208, 184);
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border-radius: 12px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.image-wrapper:hover {
+  transform: scale(1.03);
+}
+
+.overlay-text {
+  color: rgb(223, 208, 184);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+
+#bottomsection {
+    background-color: #222831;
+    color: rgb(223, 208, 184);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  
+  #bottomsection h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .info-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(34, 40, 49, 0.9);
+    border-radius: 16px;
+    padding: 2rem;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  #map {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(148, 137, 121);
+  }
+  
+  .info-text {
+   
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-family: 'Times New Roman', Times, serif;
+    flex: 1;
+  }
+  
+  .info-text p {
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .info-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .info-text {
+      text-align: center;
+    }
+  }
+
+#left-col{
+  flex: 8;
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+}
+#right-col{
+    max-width: 800px;
+    padding-top: 0px;
+    padding: 2rem;
+    flex: 2;
+    height: 100%;
+
+
+    top: 0;
+}
+
+h2{
+  color: rgb(223, 208, 184);
+  margin-top: 3rem;
+}
+.scrollable-reviews {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 10px;
+  background-color: rgba(34, 40, 49, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  color: rgb(223, 208, 184);
+  font-family: 'Times New Roman', Times, serif;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.scrollable-reviews::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.review-card {
+  background-color: rgba(40, 46, 55, 0.9);
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.review-rating {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: gold;
+}
+
+.review-content {
+  font-style: italic;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+.dropdown-wrapper {
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.dropdown-wrapper.show {
+  display: block;
+}
+
+#services-dropdown, #staff-dropdown {
+  max-height: 200px;  
+  overflow-y: auto;  
+  margin-bottom: 20px; 
+}
+
+#services-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: rgba(34, 40, 49, 0.95);
+  color: rgb(223, 208, 184);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Table Header */
+#services-table thead th {
+  background-color: rgba(57, 62, 70, 0.95);
+  color: rgb(255, 240, 210);
+  font-size: 1.15rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 2px solid rgb(148, 137, 121);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Table Rows */
+#services-table tbody td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(148, 137, 121, 0.25);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+/* Optional: Center the Duration and Price */
+#services-table td:nth-child(2),
+#services-table td:nth-child(3) {
+  text-align: center;
+}
+
+/* Row Hover */
+#services-table tbody tr:hover {
+  background-color: rgba(148, 137, 121, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Zebra Stripe */
+#services-table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+
+
+#staff-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: rgba(34, 40, 49, 0.95);
+  color: rgb(223, 208, 184);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Table Header */
+#staff-table thead th {
+  background-color: rgba(57, 62, 70, 0.95);
+  color: rgb(255, 240, 210);
+  font-size: 1.15rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 2px solid rgb(148, 137, 121);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Table Rows */
+#staff-table tbody td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(148, 137, 121, 0.25);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+/* Optional: Center the Duration and Price */
+#staff-table td:nth-child(2),
+#staff-table td:nth-child(3) {
+  text-align: center;
+}
+
+/* Row Hover */
+#staff-table tbody tr:hover {
+  background-color: rgba(148, 137, 121, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Zebra Stripe */
+#staff-table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+
+

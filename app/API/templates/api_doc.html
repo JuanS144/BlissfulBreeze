@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('api.static', filename='/css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div id="form-container">
+            <h2>API Documentation</h2>
+            <ul>
+                <li><strong>POST</strong> /login – Authenticate and get token</li>
+                <li><strong>GET</strong> /users – List all users</li>
+                <li><strong>GET</strong> /users/&lt;id&gt; – Get specific user</li>
+                <li><strong>GET</strong> /appointments – List appointments</li>
+                <li><strong>GET</strong> /appointments/&lt;id&gt; – Get specific appointment</li>
+                <li><strong>POST</strong> /appointments – Create appointment</li>
+                <li><strong>PUT</strong> /appointments/&lt;id&gt; – Update appointment</li>
+                <li><strong>DELETE</strong> /appointments/&lt;id&gt; – Delete appointment</li>
+            </ul>
+        </div>
+    </main>
+{% endblock %}
